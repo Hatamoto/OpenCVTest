@@ -60,9 +60,9 @@ This project uses Python, OpenCV, and Tesseract OCR (via the pytesseract wrapper
 
 6. **Customize Preprocessing:**
 
-Adjust parameters (e.g., thresholding, blur, dilation kernel size) in ocr.py to improve OCR accuracy for your specific images.
+	Adjust parameters (e.g., thresholding, blur, dilation kernel size) in ocr.py to improve OCR accuracy for your specific images.
 
-Experiment with different preprocessing steps (e.g., adaptive thresholding, CLAHE for contrast enhancement) and tune parameters.
+	Experiment with different preprocessing steps (e.g., adaptive thresholding, CLAHE for contrast enhancement) and tune parameters.
 
 Source:
 https://www.geeksforgeeks.org/text-detection-and-extraction-using-opencv-and-ocr/
