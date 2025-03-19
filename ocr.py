@@ -7,16 +7,32 @@ import pytesseract
 pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
 
 # Read image from which text needs to be extracted
-img = cv2.imread("./data/sample7.jpg")
+img = cv2.imread("./data/sample6.jpg")
 
 # Preprocessing the image starts
 
 # Convert the image to gray scale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+# Apply median blur to reduce noise
+blur = cv2.medianBlur(gray, 3)
+
+# Histogram equalization or CLAHE (Contrast Limited Adaptive Histogram Equalization)
+# can enhance contrast, making the text more distinguishable from the background:
+# Using CLAHE for contrast enhancement
+clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+enhanced = clahe.apply(blur)
+
 # Performing OTSU threshold
-ret, thresh1 = cv2.threshold(
-    gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+# ret, thresh1 = cv2.threshold(
+#     gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+# print("Otsu's threshold value:", ret)
+
+# Use adaptive thresholding (Gaussian or Mean)
+thresh1 = cv2.adaptiveThreshold(blur, 255,
+                                cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                                cv2.THRESH_BINARY_INV,
+                                11, 2)
 
 # Specify structure shape and kernel size.
 # Kernel size increases or decreases the area
@@ -58,7 +74,8 @@ for cnt in contours:
 
     # Apply OCR on the cropped image
     text = pytesseract.image_to_string(cropped)
-
+    if text != "":
+        print("Text found:", text)
     # Appending the text into file
     file.write(text)
     file.write("\n")
