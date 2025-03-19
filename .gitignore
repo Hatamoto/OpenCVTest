@@ -27,3 +27,6 @@ var/
 
 # VSCode settings (if applicable)
 .vscode/
+
+# output
+recognized.txt
