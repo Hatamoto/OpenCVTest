@@ -18,6 +18,8 @@ This project uses Python, OpenCV, and Tesseract OCR (via the pytesseract wrapper
 
 ## Installation
 
+	There is also a Dockerfile for simpler installation
+
 1. **Clone the repository:**
 
    ```bash
@@ -63,6 +65,8 @@ This project uses Python, OpenCV, and Tesseract OCR (via the pytesseract wrapper
 	Adjust parameters (e.g., thresholding, blur, dilation kernel size) in ocr.py to improve OCR accuracy for your specific images.
 
 	Experiment with different preprocessing steps (e.g., adaptive thresholding, CLAHE for contrast enhancement) and tune parameters.
+
+
 
 Source:
 https://www.geeksforgeeks.org/text-detection-and-extraction-using-opencv-and-ocr/

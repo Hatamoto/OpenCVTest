@@ -4,7 +4,9 @@ import pytesseract
 
 # Mention the installed location of Tesseract-OCR in your system
 # In case using colab after installing above modules
-pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
+# For OSX outside Docker
+# pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 # Read image from which text needs to be extracted
 img = cv2.imread("./data/sample6.jpg")
